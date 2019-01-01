@@ -10,7 +10,7 @@ as the inverse operation of deserializing plists into stdlib containers).
 
 It uses boost::any as a generic type in order to support heterogenous
 containers, e.g. a dictionary is a map<string, any> and an array is a
-vector<any>.  The supported stdlib containers and their associations to plist
+vector<boost/any.hpp>.  The supported stdlib containers and their associations to plist
 types is shown below. 
 
 plist           C++
