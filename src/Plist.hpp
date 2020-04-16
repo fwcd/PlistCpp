@@ -78,6 +78,7 @@ namespace Plist
 		void writePlistXML(std::ostream& stream, const std::any& message);
 		void writePlistXML(std::vector<char>& plist, const std::any& message);
 		void writePlistXML(const char* filename, const std::any& message);
+        bool isBinary(const char* filename);
 #if defined(_MSC_VER)
 		void writePlistXML(const wchar_t* filename, const std::any& message);
 #endif
