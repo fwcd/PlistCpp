@@ -5,14 +5,15 @@ In order to build this project, you need to have the following libraries install
 
 * [UnitTest++](https://github.com/unittest-cpp/unittest-cpp)
 * [Boost](https://www.boost.org)
+* [pugixml](https://pugixml.org/)
 
 On macOS this can conveniently be done through [Homebrew](https://brew.sh):
 
-* `brew install boost unittest-cpp`
+* `brew install boost unittest-cpp pugixml`
 
 Or using [vcpkg](https://github.com/Microsoft/vcpkg):
 
-* `vcpkg install boost unittest-cpp`
+* `vcpkg install boost unittest-cpp pugixml`
 
 ## Building with Tests
 * `mkdir build && cd build`

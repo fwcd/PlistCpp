@@ -25,11 +25,12 @@ endif()
 
 find_package(Boost REQUIRED COMPONENTS locale)
 find_package(UnitTest++ REQUIRED)
+find_package(pugixml REQUIRED)
 
-add_executable(runTests src/runTests.cpp src/plistTests.cpp src/pugixml.cpp src/Plist.cpp src/PlistDate.cpp)
-target_include_directories(runTests PUBLIC ${UTPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
-target_link_libraries(runTests UnitTest++)
-add_dependencies(runTests UnitTest++)
+add_executable(runTests src/runTests.cpp src/plistTests.cpp src/Plist.cpp src/PlistDate.cpp)
+target_include_directories(runTests PUBLIC ${UTPP_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${pugixml_INCLUDE_DIRS})
+target_link_libraries(runTests UnitTest++ pugixml)
+add_dependencies(runTests UnitTest++ pugixml)
 
 add_custom_command(
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
