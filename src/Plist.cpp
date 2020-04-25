@@ -753,6 +753,45 @@ void readPlist(const char* byteArrayTemp, int64_t size, std::any& message)
 
 }
 
+bool isBinary(const char* filename)
+{
+    std::ifstream stream(filename, std::ios::binary);
+	if(!stream)
+		throw Error("Can't open file.");
+    
+    int start = stream.tellg();
+	stream.seekg(0, std::ifstream::end);
+	int size = ((int) stream.tellg()) - start;
+	if(size > 0)
+	{
+		stream.seekg(0, std::ifstream::beg);
+		std::vector<char> buffer(size);
+		stream.read( (char *)&buffer[0], size );
+
+		using namespace std;
+        const unsigned char* byteArray = (const unsigned char*) &buffer[0];
+        if (!byteArray || (size == 0))
+            throw Error("Plist: Empty plist data");
+
+        // infer plist type from header.  If it has the bplist00 header as first 8
+        // bytes, then it's a binary plist.  Otherwise, assume it's XML
+
+        std::string magicHeader((const char*) byteArray, 8);
+        if(magicHeader == "bplist00")
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+	}
+	else
+	{
+		throw Error("Can't read zero length data");
+	}
+}
+
 dictionary_type parseDictionary(pugi::xml_node& node)
 {
 	using namespace std;

@@ -65,8 +65,7 @@ Unicode strings are currently not supported.
 INSTALL
 -----------------
 
-Simply copy src/Plist.hpp, src/PlistDate.hpp, src/pugixml.hpp,
-src/pugiconfig.hpp, src/base64.hpp and src/pugixml.cpp to your project.
+Simply copy src/Plist.hpp, src/PlistDate.hpp, and src/base64.hpp to your project.
 
 -----------------
 BUILD

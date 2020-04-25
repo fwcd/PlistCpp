@@ -28,7 +28,7 @@
 
 #include <any>
 #include <cstdint>
-#include <string>
+#include <string.h>
 #include <vector>
 #include <map>
 #include <iostream>
@@ -59,6 +59,7 @@ namespace Plist
 		void readPlist(std::istream& stream, T& message);
 		template<typename T>
 		void readPlist(const char* filename, T& message);
+        bool isBinary(const char* filename);
 #if defined(_MSC_VER)
 		template<typename T>
 		void readPlist(const wchar_t* filename, T& message);
